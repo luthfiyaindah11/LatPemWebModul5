@@ -1,0 +1,19 @@
+<?php
+
+header("Content-Type: application/json; charset=UTF-8");
+
+include "app/Routes/ProductRoutes.php";
+
+use app\Models\Product;
+use app\Routes\ProductRoutes;
+
+//TANGKAP REQUEST METHODE 
+$method = $_SERVER['REQUEST_METHOD'];
+//TANGKAP REQUEST PATH
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+
+
+//PANGGIL ROUTES
+$productRoute = new ProductRoutes();
+$productRoute->handle($method, $path);
